@@ -1,0 +1,856 @@
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    /* Убедитесь, что overflow: hidden УДАЛЕНО или закомментировано! */
+    /* overflow: hidden; <--- УДАЛИТЬ ЭТО! */
+    
+    overflow-y: auto; /* <--- ДОБАВИТЬ ЭТО (Разрешаем крутить вниз) */
+    overflow-x: hidden; /* Запрет прокрутки вбок */
+    margin: 0;
+    padding: 0;
+}
+
+.main-wrapper {
+    width: 100%;
+    
+    /* 1. ДЕЛАЕМ СТРАНИЦУ ДЛИННОЙ */
+    /* 100vh = 1 экран. 250vh = 2.5 экрана. Ставьте сколько нужно места под кнопки */
+    height: 250vh; 
+    
+    background-image: url('../images/bg_main.jpg'); /* Ваша картинка */
+    
+    /* 2. РАСТЯГИВАЕМ КАРТИНКУ */
+    /* 'cover' обрежет края, '100% 100%' растянет дерево в высоту (сделает ствол длинным) */
+    /* Для длинного дерева лучше попробовать 100% 100%, раз вы хотите размещать кнопки */
+    background-size: 100% 100%; 
+    
+    /* 3. РАЗРЕШАЕМ ФОНУ КРУТИТЬСЯ */
+    /* Убираем fixed, чтобы дерево уезжало вверх, когда вы крутите вниз */
+    background-attachment: scroll; 
+    
+    background-position: center top;
+    position: relative;
+    z-index: 1;
+}
+
+/* Для ПК тоже убедитесь, что высота большая */
+@media (min-width: 768px) {
+    .main-wrapper {
+        background-image: url('../images/bg_main16k_pc_.jpg'); /* Ваша широкая картинка */
+        
+        /* Тут тоже можно растянуть */
+        height: 150vh; 
+        background-size: 100% 100%; 
+        background-attachment: scroll;
+    }
+}
+
+/* --- Заголовок (Верхнее облако) --- */
+.top-cloud {
+    position: absolute;
+    top: 15%; 
+    left: 52%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 50%;
+    /* Если на картинке уже есть белое облако, фон можно не делать, или сделать полупрозрачным */
+    /* background: rgba(255, 255, 255, 0.8); */ 
+    padding: 30px;
+    border-radius: 50px;
+}
+
+.top-cloud h1 {
+    font-family: 'Balsamiq Sans', cursive; /* Мультяшный шрифт */
+    color: #FF8C00; /* Оранжевый цвет солнца */
+    font-size: 4rem;
+    text-shadow: 2px 2px 0px #fff;
+    margin-bottom: 5px;
+}
+
+.top-cloud p {
+    color: #2E8B57; /* Темно-зеленый */
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+/* --- Кнопки-Кусты (С МАСКАМИ) --- */
+.leaf-btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    
+    /* 1. По умолчанию прозрачные */
+    background-color: transparent; 
+    
+    /* Текст */
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Тень текста пожестче */
+    z-index: 10;
+    
+    /* === МАГИЯ МАСОК === */
+    /* Это заставляет кнопку принять форму картинки */
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    
+    transition: all 0.3s ease;
+}
+
+/* === ЭФФЕКТ ПРИ НАВЕДЕНИИ === */
+.leaf-btn:hover {
+    /* Когда наводим, кнопка заливается белым полупрозрачным цветом */
+    /* Но только ВНУТРИ формы куста! */
+    background-color: rgba(60, 228, 9, 0.4); 
+    
+    cursor: pointer;
+    transform: scale(1.05); /* Чуть увеличивается */
+}
+
+/* === ПОДКЛЮЧАЕМ КАРТИНКИ К КАЖДОЙ КНОПКЕ === */
+
+/* ЛЕВОЕ ДЕРЕВО */
+#btn-1 { 
+    /* О нас */
+    -webkit-mask-image: url('../images/bush_1.png');
+    mask-image: url('../images/bush_1.png');
+    /* Позицию можно чуть подвигать тут, если не совпадает с фоном */
+}
+
+#btn-2 { 
+    /* Воспитатели */
+    -webkit-mask-image: url('../images/bush_3.png');
+    mask-image: url('../images/bush_3.png');
+}
+
+#btn-3 { 
+    /* Питание */
+    -webkit-mask-image: url('../images/bush_5.png');
+    mask-image: url('../images/bush_5.png');
+}
+
+/* ПРАВОЕ ДЕРЕВО */
+#btn-6 { 
+    /* Группы */
+    -webkit-mask-image: url('../images/bush_2.png');
+    mask-image: url('../images/bush_2.png');
+}
+
+#btn-7 { 
+    /* Галерея */
+    -webkit-mask-image: url('../images/bush_4.png');
+    mask-image: url('../images/bush_4.png');
+}
+
+#btn-8 { 
+    /* Контакты */
+    -webkit-mask-image: url('../images/bush_6.png');
+    mask-image: url('../images/bush_6.png');
+}
+
+/* --- Позиция кнопок (Настройка под ветки) --- */
+/* Тут придется подгонять "на глаз" под вашу картинку */
+
+/* ЛЕВОЕ ДЕРЕВО */
+#btn-1 { top: 52.2%; left: 42.5%; transform: rotate(-5deg); width: 180px; height: 120px; }
+#btn-2 { top: 61.2%; left: 42.5%; transform: rotate(-5deg); width: 200px; height: 130px; }
+#btn-3 { top: 75%; left: 43%; transform: rotate(-7deg); width: 180px; height: 119px; }
+
+/* ПРАВОЕ ДЕРЕВО */
+#btn-6 { top: 55.5%; right: 38.7%; transform: rotate(5deg); width: 185px; height: 120px; }
+#btn-7 { top: 68.1%; right: 39.5%; transform: rotate(5deg); width: 199px; height: 135px; }
+#btn-8 { top: 79.4%; right: 38.5%; transform: rotate(-5deg); width: 190px; height: 120px; }
+
+
+/* --- Скрытый вход (Подвал) --- */
+.secret-login {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.secret-login a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+.secret-login a:hover {
+    color: white;
+}
+
+/* --- Вторая секция (Контент) --- */
+.content-section {
+    width: 100%;
+    min-height: 100vh; /* Высота минимум во весь экран */
+    background: linear-gradient(to bottom, #7CFC00 0%, #ffffff 20%); /* Переход от травы к белому */
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Эффект "Листа бумаги" */
+.paper-sheet {
+    background-color: white;
+    width: 80%;
+    max-width: 1000px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Тень */
+    text-align: center;
+}
+
+.paper-sheet h2 {
+    font-family: 'Balsamiq Sans', cursive;
+    color: #FF8C00;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.paper-sheet p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Карточки с инфо */
+.info-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    width: 30%;
+    min-width: 250px; /* Чтобы на телефонах не сжималось */
+    margin-bottom: 20px;
+    border: 2px solid #87CEEB; /* Голубая рамка */
+}
+
+.card h3 {
+    font-family: 'Balsamiq Sans', cursive;
+    color: #2E8B57;
+}
+
+/* ========================================= */
+/* СТИЛИ ДЛЯ КОРПОРАТИВНОГО ПОРТАЛА    */
+/* ========================================= */
+
+/* Серый строгий фон для страницы входа */
+.corporate-body {
+    background: #f0f2f5 !important; /* Светло-серый офисный цвет */
+    background-image: none !important; /* Убираем деревья */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif !important; /* Строгий шрифт */
+    overflow: hidden;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    width: 400px;
+    
+    border-radius: 8px; /* Небольшие скругления, строго */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Мягкая тень */
+    border-top: 5px solid #2c3e50; /* Темно-синяя полоска сверху */
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h2 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-header p {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+/* Поля ввода */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    color: #95a5a6;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #3498db; /* Синяя обводка при клике */
+    outline: none;
+}
+
+/* Кнопка */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2c3e50; /* Темно-синий */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #34495e;
+}
+
+/* Ссылка назад */
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-footer a {
+    color: #95a5a6;
+    text-decoration: none;
+    font-size: 13px;
+}
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Секция под деревьями */
+.content-section {
+    position: relative;
+    z-index: 2; /* Чтобы наезжал поверх фона */
+    background: linear-gradient(to bottom, transparent, #ffffff 20%); /* Плавный переход */
+    padding: 50px 20px;
+    min-height: 100vh; /* Высота минимум в экран */
+    display: flex;
+    justify-content: center;
+}
+
+.paper-sheet {
+    background: white;
+    width: 90%;
+    max-width: 1000px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1); /* Тень сверху */
+    margin-top: -50px; /* Небольшой наезд на фон */
+}
+
+/* Секция с формой внизу */
+.application-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Градиент от прозрачного к зеленому, чтобы сливалось с травой */
+    background: linear-gradient(to top, #4CAF50 0%, rgba(76, 175, 80, 0.8) 50%, transparent 100%);
+    padding-top: 100px;
+    padding-bottom: 30px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.form-card {
+    background: white;
+    padding: 30px 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 90%;
+    margin-bottom: 20px;
+    border: 3px solid #FFC107; /* Желтая рамка */
+}
+
+.form-card h2 { color: #2E8B57; margin-bottom: 10px; font-family: 'Balsamiq Sans', cursive; }
+.form-card p { color: #666; margin-bottom: 20px; font-size: 0.9rem; }
+
+/* Красивые поля ввода */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box; /* Чтобы padding не ломал ширину */
+}
+
+input:focus { border-color: #FFC107; }
+
+/* Кнопка */
+.btn-submit {
+    background: #FF8C00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+}
+
+.btn-submit:hover { background: #e07b00; transform: scale(1.02); }
+
+.footer-info { color: white; font-size: 0.9rem; opacity: 0.9; }
+
+.success-box {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #c3e6cb;
+    font-weight: bold;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translate(0); }
+}
+
+.logo {
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 1.8rem;
+    color: #FF8C00;
+    font-weight: bold;
+    text-decoration: none; /* Убираем подчеркивание */
+    cursor: pointer;       /* Курсор как ручка */
+}
+
+.logo:hover {
+    color: #e07b00;        /* Легкое затемнение при наведении */
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.nav-link:hover { color: #FF8C00; }
+
+.nav-btn-cta {
+    background: #2E8B57;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    
+    /* 👇 Было 30px, ставим 50px (максимальное скругление) */
+    border-radius: 50px; 
+    
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(46, 139, 87, 0.3);
+}
+.nav-btn-cta:hover {
+    background: #3CB371;
+    transform: scale(1.05);
+}
+
+/* === МОДАЛЬНОЕ ОКНО (ВСПЛЫВАШКА) === */
+.modal-overlay {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Темный фон */
+    z-index: 2000; /* Поверх меню */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+.modal-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border: 4px solid #FFC107;
+    text-align: center;
+    animation: slideUp 0.3s;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px; right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+}
+.close-btn:hover { color: red; }
+
+/* Простой футер */
+.footer-simple {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Анимации появления */
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Место для сообщений об успехе (под меню) */
+.flash-messages {
+    position: fixed;
+    top: 80px; /* Чуть ниже меню */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1500;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.side-feature {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-bottom: 4px solid #ddd;
+    max-width: 220px;
+    z-index: 10;
+    cursor: default;
+    
+    /* Анимацию удалили. Теперь они стоят смирно. */
+    transition: transform 0.3s ease; 
+}
+
+/* Ховер оставим (чуть приподнимется при наведении), это приятно */
+.side-feature:hover {
+    transform: scale(1.05) translateY(-5px) !important; /* !important чтобы перебить поворот */
+    background: white;
+    border-color: #FFC107;
+}
+
+.feature-icon {
+    font-size: 2.5rem; /* Размер смайлика */
+}
+
+.feature-text h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2E8B57;
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.feature-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: bold;
+}
+
+/* === ПОЗИЦИИ (Настраиваем, чтобы попало в пустые зоны) === */
+
+/* Слева вверху */
+.left-feature {
+    top: 40%;
+    left: 10%;
+    transform: rotate(10deg); /* Чуть наклоним для игривости */
+    animation-delay: 6s;
+}
+
+/* Слева пониже */
+.left-feature-bottom {
+    top: 70%;
+    left: 12%;
+    transform: rotate(3deg);
+    animation-delay: 2s; /* Чтобы двигались не синхронно */
+}
+
+/* Справа вверху */
+.right-feature {
+    top: 43%;
+    right: 10%;
+    transform: rotate(5deg);
+    animation-delay: 1s;
+}
+
+/* Справа пониже */
+.right-feature-bottom {
+    top: 73%;
+    right: 12%;
+    transform: rotate(-9deg);
+    animation-delay: 3s;
+}
+
+/* Сама анимация полета */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(var(--rot)); }
+    50% { transform: translateY(-15px) rotate(var(--rot)); }
+    100% { transform: translateY(0px) rotate(var(--rot)); }
+}
+
+/* Адаптив: на телефонах скрываем боковушки, чтобы не мешали */
+@media (max-width: 768px) {
+    .side-feature {
+        display: none;
+    }
+}
+
+/* ========================================= */
+/* ИСПРАВЛЕННЫЙ HEADER И КНОПКА МЕНЮ */
+/* ========================================= */
+
+/* 1. ШАПКА (Прозрачная, поверх всего) */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: transparent; /* Прозрачность */
+    display: flex;
+    justify-content: space-between; /* Лого слева, кнопка справа */
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000; /* Самый высокий слой */
+}
+
+/* 2. КНОПКА-БУРГЕР (Теперь зеленая, чтобы было видно!) */
+.hamburger-btn {
+    width: 50px;
+    height: 50px;
+    
+    /* 👇 БЫЛО WHITE, СТАЛО ЗЕЛЕНОЕ (ЧТОБЫ ВИДЕТЬ НА ОБЛАКАХ) */
+    background: #3db872; 
+    
+    border-radius: 50%; /* Круг */
+    border: 2px solid white; /* Белая обводка для красоты */
+    cursor: pointer;
+    
+    /* Центрируем полоски внутри круга */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Тень */
+    transition: transform 0.3s ease;
+}
+
+.hamburger-btn:hover {
+    transform: scale(1.1); /* Увеличение при наведении */
+    background: #50ff9f;
+}
+
+/* Полоски внутри кнопки */
+.hamburger-btn span {
+    width: 24px;
+    height: 3px;
+    background-color: white; /* Полоски делаем белыми */
+    border-radius: 2px;
+}
+
+/* 3. ВЫПАДАЮЩЕЕ МЕНЮ */
+.dropdown-menu {
+    display: none; /* Скрыто по умолчанию */
+    position: absolute;
+    top: 80px; /* Чуть ниже шапки */
+    right: 40px; /* Ровно под кнопкой */
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+    
+    /* Анимация появления */
+    animation: slideDown 0.3s ease;
+}
+
+/* Этот класс добавляет JavaScript при клике */
+.dropdown-menu.show {
+    display: flex;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: background 0.2s;
+    display: block;
+}
+
+.menu-item:hover {
+    background: #f0f0f0;
+    color: #3fc077;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================= */
+/* 📱 МОБИЛЬНАЯ ВЕРСИЯ (ФИНАЛ) */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. ФОН: Фиксируем красиво */
+    .main-wrapper {
+        height: 100vh;
+        background-image: url('../images/bg_main.jpg');
+        background-size: cover; /* Обрезает бока, оставляет центр */
+        background-position: center;
+        background-attachment: fixed; /* Фон стоит на месте при прокрутке */
+        
+        /* Включаем режим "Колонки", чтобы всё встало по центру */
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: flex-start; /* Начинаем сверху */
+    }
+
+    /* 2. HEADER: Полная прозрачность */
+    .top-navbar {
+        background: transparent !important; /* Убираем затемнение */
+        height: 70px;
+        padding: 0 20px;
+        position: absolute; /* Чтобы не толкал контент */
+    }
+    
+    .logo { font-size: 1.6rem; }
+
+    /* 3. ЗАГОЛОВОК (ОБЛАКО) */
+    .top-cloud {
+        position: relative; /* Отключаем абсолют */
+        top: auto; left: auto; transform: none;
+        
+        margin-top: 100px; /* Отступ от верха (чтобы не налезло на лого) */
+        width: 90%;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.85); /* Чуть белее, чтобы читалось */
+        margin-bottom: 20px; /* Отступ до кнопок */
+    }
+    
+    .top-cloud h1 { font-size: 1.8rem; margin-bottom: 5px; }
+    .top-cloud p { font-size: 0.9rem; }
+
+    /* 4. КНОПКИ: Выстраиваем в столб */
+    /* Сбрасываем настройки "веток" */
+    .tree-menu {
+        position: static; /* Отключаем разброс по экрану */
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Вертикальный список */
+        align-items: center; /* Строго по центру */
+        height: auto;
+        padding: 0;
+    }
+
+    /* Стиль самой кнопки (Просто текст) */
+    .leaf-btn {
+        /* Отключаем координаты ПК */
+        position: static !important; 
+        transform: none !important;
+        
+        width: auto !important;
+        height: auto !important;
+        margin: 8px 0; /* Расстояние между строчками */
+        
+        /* Убираем зеленый фон и маски */
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+        
+        /* Стиль текста */
+        color: white !important;
+        font-family: 'Balsamiq Sans', cursive;
+        font-size: 1.6rem !important; /* Крупно и читаемо */
+        font-weight: 900 !important;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.8) !important; /* Жирная тень */
+        
+        display: block; /* Чтобы точно встали в столбик */
+    }
+    
+    /* Желтеет при нажатии пальцем */
+    .leaf-btn:active {
+        color: #FFC107 !important;
+        transform: scale(0.95) !important;
+    }
+
+    /* 5. Убираем лишнее */
+    .side-feature, .footer-simple { display: none !important; }
+    
+    /* 6. Поправляем выпадающее меню */
+    .dropdown-menu {
+        top: 70px;
+        width: 94%;
+        right: 3%;
+    }
+}

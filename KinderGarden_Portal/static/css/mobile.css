@@ -1,0 +1,85 @@
+/* === ПРАВИЛА ТОЛЬКО ДЛЯ ЭКРАНОВ МЕНЬШЕ 768px === */
+@media (max-width: 768px) {
+    
+    /* 1. АДАПТАЦИЯ CRM (АДМИНКИ) */
+    .sidebar { width: 100%; height: auto; padding: 15px; flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { margin-bottom: 0; }
+    .menu { display: flex; flex-wrap: wrap; gap: 5px; width: 100%; margin-top: 15px; }
+    .menu a { padding: 8px 10px; font-size: 0.9rem; margin-bottom: 0; }
+    .main-content { padding: 15px; overflow-y: auto; height: auto; }
+    .card-grid { flex-direction: column; }
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+
+    /* 2. ШАПКА */
+    .top-navbar { padding: 0 15px !important; height: 70px !important; }
+    .logo { font-size: 22px !important; }
+    .nav-btn-cta { padding: 8px 15px !important; font-size: 14px !important; }
+
+    /* 3. УБИРАЕМ БЕЛЫЕ ПЛАШКИ (Как вы и просили) */
+    .side-feature { display: none !important; }
+
+    /* 4. ЖЕСТКАЯ ФИКСАЦИЯ ЭКРАНА (КАК В ПРИЛОЖЕНИИ) */
+    .main-wrapper {
+        height: 100vh !important; /* Фиксируем размер */
+        min-height: 100vh !important;
+        display: block !important;
+        padding-top: 0 !important;
+        background-image: url('../images/bg_main.jpg') !important; /* Возвращаем дерево */
+        background-size: cover !important;
+        background-position: center bottom !important; /* Деревья растут снизу */
+        overflow: hidden !important; /* Запрещаем скролл вниз */
+    }
+
+    /* 5. ОБЛАКО */
+    .top-cloud {
+        position: absolute !important;
+        top: 12% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90% !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        padding: 10px 15px !important;
+        border-radius: 20px !important;
+        margin: 0 !important;
+    }
+    .top-cloud h1 { font-size: 6vw !important; white-space: normal !important; margin-bottom: 5px !important; }
+    .top-cloud p { font-size: 3.5vw !important; white-space: normal !important; }
+
+    /* 6. ВОЗВРАЩАЕМ КУСТЫ НА ВЕТКИ */
+    .tree-menu { position: static !important; }
+    .leaf-btn {
+        position: absolute !important;
+        background-color: transparent !important;
+        color: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        -webkit-mask-size: 100% 100% !important;
+        mask-size: 100% 100% !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+        font-size: 4vw !important; /* Идеальный размер текста для мобилки */
+    }
+
+    /* Координаты для ЛЕВОГО дерева */
+    #btn-1 { top: 38%; left: 8%; width: 30vw !important; height: 18vw !important; -webkit-mask-image: url('../images/bush_1.png') !important; }
+    #btn-2 { top: 53%; left: 12%; width: 34vw !important; height: 20vw !important; -webkit-mask-image: url('../images/bush_3.png') !important; }
+    #btn-3 { top: 68%; left: 8%; width: 30vw !important; height: 18vw !important; -webkit-mask-image: url('../images/bush_5.png') !important; }
+
+    /* Координаты для ПРАВОГО дерева */
+    #btn-6 { top: 41%; right: 8%; width: 30vw !important; height: 18vw !important; -webkit-mask-image: url('../images/bush_2.png') !important; }
+    #btn-7 { top: 56%; right: 12%; width: 34vw !important; height: 20vw !important; -webkit-mask-image: url('../images/bush_4.png') !important; }
+    #btn-8 { top: 71%; right: 8%; width: 30vw !important; height: 18vw !important; -webkit-mask-image: url('../images/bush_6.png') !important; }
+
+    /* 7. ПОДВАЛ */
+    .footer-simple {
+        position: absolute !important;
+        bottom: 15px !important;
+        width: 100% !important;
+        font-size: 10px !important;
+        margin: 0 !important;
+    }
+}
