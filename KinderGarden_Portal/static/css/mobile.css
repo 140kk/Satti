@@ -1,0 +1,436 @@
+/* === MOBILE ONLY: адаптация CRM + новая главная только для телефона === */
+@media (max-width: 768px) {
+
+    /* ===== CRM / АДМИНКА ===== */
+    body:not(.main-site) {
+        display: block;
+        height: auto;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: #f4f6f9;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        padding: 16px 14px;
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 0 0 18px 18px;
+        position: relative;
+    }
+
+    .sidebar .logo {
+        margin-bottom: 14px;
+        font-size: 22px !important;
+    }
+
+    .menu {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .menu a {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .main-content {
+        padding: 18px 14px 30px;
+        overflow: visible;
+        height: auto;
+    }
+
+    .main-content h1 {
+        font-size: 1.55rem;
+        line-height: 1.2;
+        margin-bottom: 18px;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .card {
+        padding: 22px 18px;
+    }
+
+    .card .number {
+        font-size: 2rem;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-radius: 14px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    th, td {
+        padding: 14px 16px;
+        font-size: 0.9rem;
+    }
+
+    form.add-form,
+    form.group-form,
+    form.trans-form,
+    .add-child-form,
+    .filter-bar,
+    .group-header {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100%;
+    }
+
+    form.add-form input,
+    form.group-form input,
+    form.group-form select,
+    form.trans-form input,
+    form.trans-form select,
+    .add-child-form input,
+    .add-child-form select,
+    .filter-bar select,
+    input,
+    select,
+    button,
+    .btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .settings-container,
+    .groups-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .settings-card,
+    .log-card {
+        max-width: none;
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* ===== ГЛАВНАЯ САЙТА: ТОЛЬКО ТЕЛЕФОН ===== */
+    body.main-site {
+        display: block;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background:
+            radial-gradient(circle at 16% 12%, rgba(255, 194, 87, 0.32), transparent 28%),
+            radial-gradient(circle at 86% 8%, rgba(66, 209, 143, 0.24), transparent 26%),
+            linear-gradient(180deg, #effcff 0%, #f7fbff 45%, #fff7e8 100%);
+        color: #213047;
+    }
+
+    body.main-site .top-navbar {
+        position: sticky !important;
+        top: 0;
+        height: auto !important;
+        min-height: 70px;
+        padding: 12px 14px !important;
+        background: rgba(255, 255, 255, 0.92) !important;
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(43, 64, 89, 0.08);
+        box-shadow: 0 8px 28px rgba(26, 48, 72, 0.08);
+    }
+
+    body.main-site .top-navbar .logo {
+        font-size: 24px !important;
+        margin: 0 !important;
+        color: #ff8c00 !important;
+    }
+
+    body.main-site .nav-buttons {
+        gap: 10px !important;
+    }
+
+    body.main-site .nav-btn-cta {
+        padding: 10px 14px !important;
+        font-size: 13px !important;
+        border-radius: 999px !important;
+        background: #2e9d63 !important;
+        box-shadow: 0 8px 20px rgba(46, 157, 99, 0.25) !important;
+    }
+
+    body.main-site .circle-btn {
+        width: 42px !important;
+        height: 42px !important;
+        border-radius: 50% !important;
+        background: #35b779 !important;
+        box-shadow: 0 8px 20px rgba(53, 183, 121, 0.22) !important;
+    }
+
+    body.main-site .main-wrapper {
+        width: 100% !important;
+        height: auto !important;
+        min-height: calc(100vh - 70px) !important;
+        aspect-ratio: auto !important;
+        overflow: visible !important;
+        display: block !important;
+        position: relative !important;
+        padding: 24px 16px 18px !important;
+        background-image: none !important;
+        background:
+            linear-gradient(135deg, rgba(255,255,255,0.88), rgba(255,255,255,0.48)),
+            radial-gradient(circle at 12% 18%, rgba(255, 154, 31, 0.22), transparent 24%),
+            radial-gradient(circle at 88% 12%, rgba(46, 157, 99, 0.22), transparent 26%),
+            radial-gradient(circle at 50% 100%, rgba(100, 190, 255, 0.18), transparent 34%) !important;
+    }
+
+    body.main-site .main-wrapper::before,
+    body.main-site .main-wrapper::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    body.main-site .main-wrapper::before {
+        width: 190px;
+        height: 190px;
+        right: -70px;
+        top: 34px;
+        background: rgba(46, 157, 99, 0.12);
+    }
+
+    body.main-site .main-wrapper::after {
+        width: 150px;
+        height: 150px;
+        left: -54px;
+        bottom: 22px;
+        background: rgba(255, 154, 31, 0.16);
+    }
+
+    body.main-site .top-cloud {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        z-index: 1 !important;
+        margin: 0 0 16px !important;
+        padding: 26px 18px !important;
+        border-radius: 28px !important;
+        text-align: left !important;
+        background: rgba(255, 255, 255, 0.92) !important;
+        box-shadow: 0 14px 38px rgba(31, 52, 84, 0.12) !important;
+        border: 1px solid rgba(255,255,255,0.75);
+    }
+
+    body.main-site .top-cloud::before {
+        content: "Современный детский сад";
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(255, 154, 31, 0.13);
+        color: #f08a00;
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    body.main-site .top-cloud h1 {
+        font-size: 30px !important;
+        line-height: 1.12 !important;
+        white-space: normal !important;
+        margin: 0 0 10px !important;
+        color: #213047 !important;
+        text-shadow: none !important;
+    }
+
+    body.main-site .top-cloud h1::after {
+        content: " — забота, развитие и безопасность";
+        color: #2e9d63;
+    }
+
+    body.main-site .top-cloud p {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+        white-space: normal !important;
+        color: #637083 !important;
+        font-weight: 800 !important;
+    }
+
+    body.main-site .side-feature {
+        display: none !important;
+    }
+
+    body.main-site .tree-menu {
+        position: relative !important;
+        z-index: 1 !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin: 0 0 12px !important;
+    }
+
+    body.main-site .leaf-btn {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: 112px !important;
+        padding: 16px 12px !important;
+        border-radius: 24px !important;
+        background: rgba(255,255,255,0.94) !important;
+        color: #213047 !important;
+        box-shadow: 0 12px 30px rgba(31, 52, 84, 0.10) !important;
+        border: 1px solid rgba(255,255,255,0.8) !important;
+        text-shadow: none !important;
+        font-size: 15px !important;
+        font-weight: 900 !important;
+        line-height: 1.2 !important;
+        transform: none !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 9px !important;
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+        -webkit-mask-size: auto !important;
+        mask-size: auto !important;
+    }
+
+    body.main-site .leaf-btn::before {
+        display: flex;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(46,157,99,0.13), rgba(255,154,31,0.16));
+        font-size: 22px;
+    }
+
+    body.main-site #btn-1::before { content: "🏫"; }
+    body.main-site #btn-2::before { content: "👩‍🏫"; }
+    body.main-site #btn-3::before { content: "🥗"; }
+    body.main-site #btn-6::before { content: "👶"; }
+    body.main-site #btn-7::before { content: "🖼️"; }
+    body.main-site #btn-8::before { content: "📍"; }
+
+    body.main-site .leaf-btn:hover,
+    body.main-site .leaf-btn:active {
+        transform: translateY(-2px) !important;
+        background: #ffffff !important;
+    }
+
+    body.main-site .footer-simple {
+        position: relative !important;
+        z-index: 1 !important;
+        bottom: auto !important;
+        width: 100% !important;
+        margin-top: 18px !important;
+        padding: 16px 8px 4px !important;
+        color: #637083 !important;
+        text-align: center !important;
+        font-size: 12px !important;
+        text-shadow: none !important;
+    }
+
+    body.main-site .modal-overlay {
+        padding: 16px !important;
+    }
+
+    body.main-site .modal-card {
+        width: 100% !important;
+        max-width: 360px !important;
+        padding: 26px 20px !important;
+        border-radius: 24px !important;
+    }
+
+    body.main-site .modal-card input,
+    body.main-site .btn-submit {
+        width: 100% !important;
+        min-height: 46px !important;
+    }
+}
+
+
+/* ===== ВНУТРЕННИЕ СТРАНИЦЫ /page/... : ТОЛЬКО ТЕЛЕФОН ===== */
+@media (max-width: 768px) {
+    body.inner-page {
+        min-height: 100vh !important;
+        height: auto !important;
+        display: block !important;
+        padding: 18px 14px !important;
+        background-image: none !important;
+        background:
+            radial-gradient(circle at 14% 10%, rgba(255, 194, 87, 0.28), transparent 26%),
+            radial-gradient(circle at 86% 10%, rgba(66, 209, 143, 0.20), transparent 26%),
+            linear-gradient(180deg, #effcff 0%, #f7fbff 55%, #fff8ec 100%) !important;
+    }
+
+    body.inner-page .content-container {
+        width: 100% !important;
+        max-width: none !important;
+        min-height: auto !important;
+        margin: 0 auto !important;
+        padding: 24px 18px !important;
+        border-radius: 28px !important;
+        background: rgba(255, 255, 255, 0.92) !important;
+        box-shadow: 0 14px 38px rgba(31, 52, 84, 0.12) !important;
+        text-align: left !important;
+    }
+
+    body.inner-page .home-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px 18px !important;
+        margin-bottom: 18px !important;
+        border-radius: 999px !important;
+        font-size: 14px !important;
+        box-shadow: 0 8px 20px rgba(255, 140, 0, 0.18) !important;
+    }
+
+    body.inner-page h1 {
+        font-size: 2rem !important;
+        line-height: 1.15 !important;
+        margin-bottom: 16px !important;
+        text-align: center !important;
+    }
+
+    body.inner-page .content-container > div {
+        font-size: 1.02rem !important;
+        line-height: 1.8 !important;
+        color: #424b57 !important;
+        text-align: left !important;
+        word-break: break-word;
+    }
+
+    body.inner-page .content-container h2 {
+        font-size: 1.35rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 12px !important;
+        color: #213047 !important;
+    }
+
+    body.inner-page .content-container p,
+    body.inner-page .content-container strong,
+    body.inner-page .content-container br {
+        font-size: inherit !important;
+    }
+}
